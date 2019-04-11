@@ -1,0 +1,11 @@
+tables
+    -users(user_id,name,email,password,role_id) 
+                    (1,asdf,asdf@gmail.com,asdfasdf,1234)
+    -roles(role_id,names)   
+                    (1,admin  2,developer  3,qa)
+    -permissions(permission_id,role_id,entity_id,add_edit,delete,list)  
+                    (1,1,1,1,1)
+    -projects(project_id,title,desc,multiple_users,start_date,end_date) 
+                    (1,ffje,wifjwijef,asdf@gmail.com,date.now(),date.now())
+    -entities(entity_id,name)    
+                (1,projects     2,tasks     3,bugs)
