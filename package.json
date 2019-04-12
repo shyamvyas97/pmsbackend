@@ -1,0 +1,23 @@
+{
+  "name": "pmsbackend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shyamvyas97/pmsbackend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shyamvyas97/pmsbackend/issues"
+  },
+  "homepage": "https://github.com/shyamvyas97/pmsbackend#readme",
+  "dependencies": {
+    "logger": "0.0.1"
+  }
+}
