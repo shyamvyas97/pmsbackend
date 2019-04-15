@@ -44,7 +44,7 @@ exports.delete = (req, res) =>{
 };
 
 exports.get = (req, res) =>{
-	let TaskId = req.params.TaskId;
+	let TaskId = req.params.task_id;
 	Tasks.findById(TaskId,(err, item)=>{
 		if(!err){
 			res.json(item);

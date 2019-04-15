@@ -45,7 +45,7 @@ exports.delete = (req, res) => {
 };
 
 exports.get = (req, res) => {
-	let projectId = req.params.projectId;
+	let projectId = req.params.pro_id;
 	Projects.findById(projectId, (err, item) => {
 		if (!err) {
 			res.json(item);

@@ -44,7 +44,7 @@ exports.delete = (req, res) =>{
 };
 
 exports.get = (req, res) =>{
-	let userId = req.params.userId;
+	let userId = req.params.user_id;
 	Users.findById(userId,(err, item)=>{
 		if(!err){
 			res.json(item);

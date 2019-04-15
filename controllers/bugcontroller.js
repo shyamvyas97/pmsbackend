@@ -44,12 +44,12 @@ exports.delete = (req, res) =>{
 };
 
 exports.get = (req, res) =>{
-	let TaskId = req.params.TaskId;
-	Tasks.findById(TaskId,(err, item)=>{
+	let BugId = req.params.bug_id;
+	Bug.findById(BugId,(err, item)=>{
 		if(!err){
 			res.json(item);
 		}else{
 			res.json(err);
 		}
-	}).populate('Tasks');
+	}).populate('Bugs');
 };
