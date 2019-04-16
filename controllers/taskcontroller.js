@@ -32,16 +32,21 @@ exports.update = (req, res) =>{
     });
 };
 
+
 exports.delete = (req, res) =>{
 	let task_id = req.params.task_id;
-    Task.findByIdAndRemove({_id: task_id}, (err, task) => {
-        if (err)
+	Task.findOneAndRemove({
+		_id:task_id
+},{
+	useFindAndModify:false
+},(err,task) =>      {
+	  if (err)
             res.json(err);
         else
             res.json(task);
-            res.json('Remove successfully');
     });
 };
+
 
 exports.get = (req, res) =>{
 	let TaskId = req.params.task_id;

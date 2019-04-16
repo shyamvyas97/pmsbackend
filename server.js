@@ -7,6 +7,7 @@ var mongoose = require('mongoose');
 var logger = require('morgan');
 // var passport = require('passport');
 // var LocalStrategy = require('passport-local').Strategy;
+var port = 3000;
 
 app.use(logger('dev'));
 app.use(cors());
@@ -15,16 +16,19 @@ app.use(bodyParser.json());
 // app.use(passport.session());
 
 const Projects = require('./routes/projectsroute');
-app.use('/projects',Projects);
+app.use('/',Projects);
 
 const Users = require('./routes/usersroute');
-app.use('/users',Users);
+app.use('/',Users);
 
 const Tasks = require('./routes/tasksroute');
-app.use('/tasks',Tasks);
+app.use('/',Tasks);
 
 const Bugs = require('./routes/bugsroute');
-app.use('/bugs',Bugs);
+app.use('/',Bugs);
+
+const Roles = require('./routes/rolesroute');
+app.use('/',Roles);
 
 //Connection String
 mongoose.connect('mongodb://localhost:27017/pms');
@@ -36,3 +40,4 @@ connection.once('open', () => {
 });
 
 // app.use('/', routes);
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));

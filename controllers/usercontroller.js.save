@@ -13,7 +13,6 @@ exports.index = (req, res) =>{
 exports.add = (req, res) =>{
 	let user = new User(req.body);
     //add
-	console.log(user);
     user.save()
         .then(user => {
             res.status(200).json({'user': 'Added successfully'});
@@ -25,8 +24,8 @@ exports.add = (req, res) =>{
 
 exports.update = (req, res) =>{
 	let user_id = req.params.user_id;
-    User.findOneAndUpdate({_id: user_id},{$set: req.body}, {new: true,useFindAndModify:false}, (err, user) => {
-        if(err)
+    User.findOneAndUpdate({_id: user_id},{$set: req.body}, (err, user) => {
+        if (err)
             res.json(err);
         else
             res.json(user);
@@ -44,8 +43,19 @@ exports.delete = (req, res) =>{
             res.json(err);
         else
             res.json(user);
-    });
+            res.json('Remove successfully');
+  }  });
 };
+
+exports.delete = (req,res) => {
+	letuser_id = req.params.user_id;
+	User.findOneAndRemove({
+		_id:user_id
+},
+{
+	useFindAndModify:false
+}, (err,item)
+
 
 exports.get = (req, res) =>{
 	let userId = req.params.user_id;

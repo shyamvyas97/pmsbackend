@@ -32,16 +32,21 @@ exports.update = (req, res) =>{
     });
 };
 
+
 exports.delete = (req, res) =>{
 	let bug_id = req.params.bug_id;
-    Bug.findByIdAndRemove({_id: bug_id}, (err, bug) => {
-        if (err)
+	Bug.findOneAndRemove({
+		_id:bug_id
+},{
+	useFindAndModify:false
+},(err,bug) =>      {
+	  if (err)
             res.json(err);
         else
             res.json(bug);
-            res.json('Remove successfully');
     });
 };
+
 
 exports.get = (req, res) =>{
 	let BugId = req.params.bug_id;

@@ -14,6 +14,7 @@ exports.index = (req, res) => {
 exports.store = (req, res) => {
 	let project = new Project(req.body);
     //add
+	console.log(project);
     project.save()
         .then(project => {
             res.status(200).json({'project': 'Added successfully'});
@@ -33,16 +34,21 @@ exports.update = (req, res) => {
     });
 };
 
-exports.delete = (req, res) => {
+
+exports.delete = (req, res) =>{
 	let pro_id = req.params.pro_id;
-    Project.findByIdAndRemove({_id: pro_id}, (err, project) => {
-        if (err)
+	Project.findOneAndRemove({
+		_id:pro_id
+},{
+	useFindAndModify:false
+},(err,project) =>      {
+	  if (err)
             res.json(err);
         else
             res.json(project);
-            res.json('Remove successfully');
     });
 };
+
 
 exports.get = (req, res) => {
 	let projectId = req.params.pro_id;
