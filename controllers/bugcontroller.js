@@ -2,7 +2,7 @@ var Bug = require('../models/bug');
 const mongoose = require('mongoose');
 
 exports.index = (req, res) =>{
-	Bug.find((err, bug) => {
+	Bug.find().populate('of_project','users_assigned').exec((err, bug) => {
         if (err)
             console.log(err);
         else

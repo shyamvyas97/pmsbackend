@@ -2,7 +2,7 @@ const Project = require('../models/project');
 const mongoose = require('mongoose');
 
 exports.index = (req, res) => {
-	Project.find((err, project) => {
+	Project.find().populate('multiple_users').exec((err, project) => {
         if (err)
             console.log(err);
         else
@@ -52,7 +52,7 @@ exports.delete = (req, res) =>{
 
 exports.get = (req, res) => {
 	let projectId = req.params.pro_id;
-	Projects.findById(projectId, (err, item) => {
+	Project.findById(projectId, (err, item) => {
 		if (!err) {
 			res.json(item);
 		} else {

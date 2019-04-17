@@ -2,7 +2,7 @@ var Task = require('../models/task');
 const mongoose = require('mongoose');
 
 exports.index = (req, res) =>{
-	Task.find((err, task) => {
+	Task.find().populate('of_project','users_assigned').exec((err, task) => {
         if (err)
             console.log(err);
         else
@@ -50,7 +50,7 @@ exports.delete = (req, res) =>{
 
 exports.get = (req, res) =>{
 	let TaskId = req.params.task_id;
-	Tasks.findById(TaskId,(err, item)=>{
+	Task.findById(TaskId,(err, item)=>{
 		if(!err){
 			res.json(item);
 		}else{

@@ -1,8 +1,9 @@
 var User = require('../models/user');
 const mongoose = require('mongoose');
+var Role = require('../models/role');
 
 exports.index = (req, res) =>{
-	User.find((err, user) => {
+	User.find().populate('role_name').exec((err, user) => {
         if (err)
             console.log(err);
         else
@@ -55,7 +56,7 @@ exports.get = (req, res) =>{
 		}else{
 			res.json(err);
 		}
-	}).populate('user');
+	});
 };
 
 exports.login = (req, res) =>{
