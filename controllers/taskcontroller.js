@@ -2,7 +2,7 @@ var Task = require('../models/task');
 const mongoose = require('mongoose');
 
 exports.index = (req, res) =>{
-	Task.find().populate('of_project','users_assigned').exec((err, task) => {
+	Task.find().populate('of_project').populate('users_assigned').exec((err, task) => {
         if (err)
             console.log(err);
         else
