@@ -60,7 +60,7 @@ exports.get = (req, res) =>{
 };
 
 exports.login = (req, res) =>{
-	Users.findOne({name: req.body.name},(err, item)=>{
+	User.findOne({email: req.body.email},(err, item)=>{
 		if(!err){
 			if(item){
 				res.json({'message':'success'});
@@ -70,5 +70,5 @@ exports.login = (req, res) =>{
 		}else{
 			res.json(err);
 		}
-	})
+	}).populate('role_name');
 };
