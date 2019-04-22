@@ -2,16 +2,12 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let Permission = new Schema({
-    role: {
-        type: String
-    },
-    entity: {
-    	type: String
-    },
+    role: [{ type: Schema.Types.ObjectId, ref: 'Roles' }],
+    entity: [{ type: Schema.Types.ObjectId, ref: 'Entity' }],
     add_edit: {
         type: String
     },
-    delete: {
+    del: {
         type: String
     },
     list: {
