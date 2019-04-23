@@ -63,7 +63,7 @@ exports.login = (req, res) =>{
 	User.findOne({email: req.body.email},(err, item)=>{
 		if(!err){
 			if(item){
-				res.json({'message':'success'});
+				res.json(item);
 			}else{
 				res.json({'message':'fail'});				
 			}
