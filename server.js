@@ -30,6 +30,9 @@ app.use('/',Bugs);
 const Roles = require('./routes/rolesroute');
 app.use('/',Roles);
 
+const Entities = require('./routes/entityroute');
+app.use('/',Entities);
+
 //Connection String
 mongoose.connect('mongodb://localhost:27017/pms');
 
