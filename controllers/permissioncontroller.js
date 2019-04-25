@@ -9,6 +9,7 @@ exports.index = (req, res) => {
 			res.json(permission);
 	});
 };
+
 exports.get = (req, res) => {
 	let permissionId = req.params.permission_id;
 	Permission.findById(permissionId, (err, permission) => {
