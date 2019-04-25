@@ -11,18 +11,6 @@ exports.index = (req, res) => {
 	});
 };
 
-// exports.get = (req, res) => {
-// 	let permissionId = req.params.permission_id;
-// 	Permission.findById(permissionId, (err, permission) => {
-// 		if (!err) {
-// 			res.json(permission);
-// 		} else {
-// 			res.json(err);
-// 		}
-// 	});
-// };
-
-//Using Async
 exports.get = (req, res) => {
 	let permissionId = req.params.permission_id;
 	Permission.findById(permissionId).populate('role').populate('entity').exec(function (err, data) {

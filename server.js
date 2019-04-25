@@ -33,6 +33,9 @@ app.use('/',Roles);
 const Entities = require('./routes/entityroute');
 app.use('/',Entities);
 
+const Permissions = require('./routes/permissionroute');
+app.use('/',Permissions);
+
 //Connection String
 mongoose.connect('mongodb://localhost:27017/pms');
 
