@@ -1,5 +1,6 @@
 const Permission = require('../models/permission');
 const mongoose = require('mongoose');
+const Role = require('../models/role');
 
 exports.index = (req, res) => {
 	Permission.find().populate('role').populate('entity').exec((err, permission) => {
@@ -9,16 +10,36 @@ exports.index = (req, res) => {
 			res.json(permission);
 	});
 };
+
+// exports.get = (req, res) => {
+// 	let permissionId = req.params.permission_id;
+// 	Permission.findById(permissionId, (err, permission) => {
+// 		if (!err) {
+// 			res.json(permission);
+// 		} else {
+// 			res.json(err);
+// 		}
+// 	});
+// };
+
+//Using Async
 exports.get = (req, res) => {
 	let permissionId = req.params.permission_id;
-	Permission.findById(permissionId, (err, permission) => {
-		if (!err) {
-			res.json(permission);
-		} else {
-			res.json(err);
-		}
+	Permission.findById(permissionId).populate('role').populate('entity').exec(function (err, data) {
+		if (err) return handleError(err);
+
+		async.forEach(data, function (role, callback) {
+			Role.populate(role.role_name, function (err, output) {
+				if (err) throw err;
+				// else res.json(output);
+				callback();
+			});
+		}, function (err) {
+			res.json(data);
+		});
+
 	});
-};
+}
 
 exports.add = (req, res) => {
 	let permission = new Permission(req.body);
