@@ -62,5 +62,5 @@ exports.get = (req, res) => {
         } else {
             res.json(err);
         }
-    }).populate('Tasks');
+    }).populate('of_project').populate('users_assigned');
 };

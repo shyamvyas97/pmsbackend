@@ -64,5 +64,5 @@ exports.get = (req, res) => {
         } else {
             res.json(err);
         }
-    }).populate('users');
+    }).populate('multiple_users');
 };
